@@ -24,7 +24,7 @@ public class NoteLab {
             mNotes.add(note);
         }
     }
-    public NoteLab getInstance(Context context){
+    public static NoteLab get(Context context){
         if (sNoteLab == null){
             return new NoteLab(context);
         }
@@ -43,4 +43,5 @@ public class NoteLab {
         }
         return null;
     }
+
 }
