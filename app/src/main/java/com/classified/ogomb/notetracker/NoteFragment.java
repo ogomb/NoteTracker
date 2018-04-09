@@ -32,7 +32,7 @@ public class NoteFragment  extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                mNote.setNote((String) charSequence);
+                mNote.setNote(charSequence.toString());
             }
 
             @Override

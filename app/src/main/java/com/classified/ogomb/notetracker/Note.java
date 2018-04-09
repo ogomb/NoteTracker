@@ -7,6 +7,7 @@ public class Note {
     private UUID mId;
     private Date mDate;
     private String mNote;
+    private Boolean mDone;
 
     public Note(){
         mId = UUID.randomUUID();
@@ -31,5 +32,13 @@ public class Note {
 
     public void setNote(String note) {
         mNote = note;
+    }
+
+    public Boolean getDone() {
+        return mDone;
+    }
+
+    public void setDone(Boolean done) {
+        mDone = done;
     }
 }
