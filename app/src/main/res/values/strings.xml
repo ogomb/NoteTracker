@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NoteTracker</string>
+    <string name="Title">My Note</string>
+    <string name="image_caption">Add image?</string>
+    <string name="Add_note_hint">Enter your notes...</string>
+    <string name="note_done">Done?</string>
+
 </resources>
