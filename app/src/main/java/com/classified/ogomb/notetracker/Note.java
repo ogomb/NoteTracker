@@ -3,10 +3,6 @@ package com.classified.ogomb.notetracker;
 import java.util.Date;
 import java.util.UUID;
 
-/**
- * Created by lewismbogo on 09/04/2018.
- */
-
 public class Note {
     private UUID mId;
     private Date mDate;
