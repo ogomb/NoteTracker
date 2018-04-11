@@ -7,4 +7,9 @@
     <string name="Add_note_hint">Enter your notes...</string>
     <string name="note_done">Done?</string>
 
+    <string name="new_note">New Note</string>
+    <string name="show_subtitle">Show subtitle</string>
+    <string name="hide_subtitle">Hide subtitle</string>
+    <string name="subtitle_format">%1$s notes</string>
+
 </resources>

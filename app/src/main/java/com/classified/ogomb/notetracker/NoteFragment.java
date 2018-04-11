@@ -78,7 +78,7 @@ public class NoteFragment  extends Fragment {
             }
         });
         mDoneCheckBox = view.findViewById(R.id.note_done);
-        mDoneCheckBox.setChecked(mNote.getDone());
+//        mDoneCheckBox.setChecked(mNote.getDone());
         mDoneCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
