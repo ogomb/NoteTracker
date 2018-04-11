@@ -109,6 +109,7 @@ public class NoteListFragment extends Fragment {
             mAdapter = new NoteAdapter(notes);
             mNoteRecyclerView.setAdapter(mAdapter);
         }else {
+            mAdapter.setNotes(notes);
             mAdapter.notifyDataSetChanged();
         }
         updateSubtitle();
@@ -168,6 +169,9 @@ public class NoteListFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mNotes.size();
+        }
+        public void setNotes(List<Note> notes){
+            mNotes = notes;
         }
     }
 

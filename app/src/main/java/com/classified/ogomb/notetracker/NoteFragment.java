@@ -35,6 +35,11 @@ public class NoteFragment  extends Fragment {
         UUID noteId = (UUID) getArguments().getSerializable(ARG_NOTE_ID);
         mNote = NoteLab.get(getActivity()).getNote(noteId);
     }
+    @Override
+    public void onPause(){
+        super.onPause();
+        NoteLab.get(getActivity()).updateNote(mNote);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){

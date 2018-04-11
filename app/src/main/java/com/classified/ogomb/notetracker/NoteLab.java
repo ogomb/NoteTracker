@@ -1,6 +1,14 @@
 package com.classified.ogomb.notetracker;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.classified.ogomb.notetracker.database.NoteBaseHelper;
+import com.classified.ogomb.notetracker.database.NoteCursorWrapper;
+import com.classified.ogomb.notetracker.database.NoteDbSchema;
+import com.classified.ogomb.notetracker.database.NoteDbSchema.NoteTable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +20,12 @@ import java.util.UUID;
 
 public class NoteLab {
     private static NoteLab sNoteLab;
-    private List<Note> mNotes;
+    private Context mContext;
+    private SQLiteDatabase mDatabase;
 
     private NoteLab(Context context){
-        mNotes = new ArrayList<>();
+        mContext = context.getApplicationContext();
+        mDatabase = new NoteBaseHelper(mContext).getWritableDatabase();
 
     }
     public static NoteLab get(Context context){
@@ -26,20 +36,71 @@ public class NoteLab {
     }
 
     public List<Note> getNotes(){
-        return mNotes;
+        List<Note> notes = new ArrayList<>();
+        NoteCursorWrapper cursor = queryNotes(null, null);
+
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()){
+                notes.add(cursor.getNote());
+                cursor.moveToNext();
+            }
+        }finally {
+            cursor.close();
+        }
+        return notes;
     }
 
     public Note getNote(UUID id){
-        for (Note note: mNotes){
-            if (note.getId().equals(id)){
-                return note;
+        NoteCursorWrapper cursor = queryNotes(
+                NoteTable.Cols.UUID +" = ?",
+                new String[] { id.toString() }
+        );
+        try {
+            if (cursor.getCount() == 0 ){
+                return  null;
             }
+            cursor.moveToFirst();
+            return cursor.getNote();
+        }finally {
+            cursor.close();
         }
-        return null;
     }
 
     public void addNote(Note note){
-        mNotes.add(note);
+        ContentValues values = getContentValues(note);
+        mDatabase.insert(NoteTable.NAME, null, values);
+    }
+
+    public void updateNote(Note note){
+        String uuidString = note.getId().toString();
+        ContentValues values = getContentValues(note);
+
+        mDatabase.update(NoteTable.NAME, values, NoteTable.Cols.UUID + " = ?", new String[]{ uuidString });
+    }
+    private static ContentValues getContentValues(Note note){
+        ContentValues values = new ContentValues();
+        values.put(NoteTable.Cols.UUID, note.getId().toString());
+        values.put(NoteTable.Cols.TITLE, note.getTitle());
+        values.put(NoteTable.Cols.NOTE_BODY, note.getNote());
+        values.put(NoteTable.Cols.DATE, note.getDate().getTime());
+        values.put(NoteTable.Cols.DONE, note.getDone() ? 1 : 0);
+
+        return  values;
+    }
+
+    private NoteCursorWrapper queryNotes(String whereClause, String[] whereArgs){
+        Cursor cursor = mDatabase.query(
+                NoteTable.NAME,
+                null, //selects all columns
+                whereClause,
+                whereArgs,
+                null, //group by
+                null, // having
+                null // orderby
+        );
+                return new NoteCursorWrapper(cursor);
+
     }
 
 }
