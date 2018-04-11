@@ -1,15 +1,24 @@
 package com.classified.ogomb.notetracker;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 
+import java.util.UUID;
 
 public class NoteActivity extends SingleFragmentActivity {
+    private static final String EXTRA_NOTE_ID = "com.labs.classified.notetracker.note_id";
 
     @Override
     public Fragment createFragment() {
-        return new NoteFragment();
+        UUID noteId = (UUID)getIntent()
+                .getSerializableExtra(EXTRA_NOTE_ID);
+        return NoteFragment.newInstance(noteId);
+    }
+
+    public static Intent newIntent(Context packageContext, UUID noteId){
+        Intent intent = new Intent(packageContext, NoteActivity.class);
+        intent.putExtra(EXTRA_NOTE_ID, noteId);
+        return intent;
     }
 }

@@ -18,7 +18,7 @@ public class NoteLab {
         mNotes = new ArrayList<>();
         for (int i= 0; i< 50; i++){
             Note  note = new Note();
-            note.setNote("Note # " + i);
+            note.setTitle("Note # " + i);
             note.setDone(i % 2 == 0);
 
             mNotes.add(note);
@@ -26,7 +26,7 @@ public class NoteLab {
     }
     public static NoteLab get(Context context){
         if (sNoteLab == null){
-            return new NoteLab(context);
+            sNoteLab = new NoteLab(context);
         }
         return sNoteLab;
     }

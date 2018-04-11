@@ -11,6 +11,18 @@
         style="?android:listSeparatorTextViewStyle"/>
 
     <EditText
+        android:id="@+id/note_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/note_title"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Note"
+        style="?android:listSeparatorTextViewStyle"/>
+
+    <EditText
         android:id="@+id/noteText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

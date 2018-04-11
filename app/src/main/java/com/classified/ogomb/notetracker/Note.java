@@ -6,6 +6,7 @@ import java.util.UUID;
 public class Note {
     private UUID mId;
     private Date mDate;
+    private String mTitle;
     private String mNote;
     private Boolean mDone;
 
@@ -36,6 +37,14 @@ public class Note {
 
     public Boolean getDone() {
         return mDone;
+    }
+
+    public String getTitle() {
+        return mTitle;
+    }
+
+    public void setTitle(String title) {
+        mTitle = title;
     }
 
     public void setDone(Boolean done) {

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">NoteTracker</string>
-    <string name="Title">My Note</string>
+    <string name="Title">Title</string>
+    <string name="note_title">Enter Note Title...</string>
+    <string name="Note">Note</string>
     <string name="more_information">More Information</string>
     <string name="Add_note_hint">Enter your notes...</string>
     <string name="note_done">Done?</string>
