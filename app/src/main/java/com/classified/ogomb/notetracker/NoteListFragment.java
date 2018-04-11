@@ -28,13 +28,24 @@ public class NoteListFragment extends Fragment {
 
         return view;
     }
+    @Override
+
+    public void onResume(){
+        super.onResume();
+        updateUI();
+
+    }
 
     private void updateUI(){
         NoteLab noteLab =   NoteLab.get(getActivity());
         List<Note> notes = noteLab.getNotes();
 
-        mAdapter = new NoteAdapter(notes);
-        mNoteRecyclerView.setAdapter(mAdapter);
+        if (mAdapter == null) {
+            mAdapter = new NoteAdapter(notes);
+            mNoteRecyclerView.setAdapter(mAdapter);
+        }else {
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
 
