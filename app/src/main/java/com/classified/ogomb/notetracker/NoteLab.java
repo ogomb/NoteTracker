@@ -84,7 +84,7 @@ public class NoteLab {
         values.put(NoteTable.Cols.TITLE, note.getTitle());
         values.put(NoteTable.Cols.NOTE_BODY, note.getNote());
         values.put(NoteTable.Cols.DATE, note.getDate().getTime());
-        values.put(NoteTable.Cols.DONE, note.getDone() ? 1 : 0);
+        values.put(NoteTable.Cols.DONE, note.isDone() ? 1 : 0);
 
         return  values;
     }

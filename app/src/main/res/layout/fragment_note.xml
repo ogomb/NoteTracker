@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Note"
+        android:text="@string/Details"
         style="?android:listSeparatorTextViewStyle"/>
 
     <EditText
@@ -42,6 +42,10 @@
         android:layout_marginRight="16dp"
         android:text="@string/note_done"/>
 
-
+    <Button
+        android:id="@+id/send_report_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_note"/>
 
 </LinearLayout>

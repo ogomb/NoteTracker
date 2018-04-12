@@ -8,7 +8,7 @@ public class Note {
     private Date mDate;
     private String mTitle;
     private String mNote;
-    private Boolean mDone;
+    private boolean mDone;
 
     public Note(){
         this(UUID.randomUUID());
@@ -39,9 +39,6 @@ public class Note {
         mNote = note;
     }
 
-    public Boolean getDone() {
-        return mDone;
-    }
 
     public String getTitle() {
         return mTitle;
@@ -51,7 +48,11 @@ public class Note {
         mTitle = title;
     }
 
-    public void setDone(Boolean done) {
+    public boolean isDone() {
+        return mDone;
+    }
+
+    public void setDone(boolean done) {
         mDone = done;
     }
 }

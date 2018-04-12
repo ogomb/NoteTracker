@@ -10,10 +10,10 @@ public class NoteDbSchema {
 
         public static final class Cols {
             public static final String UUID = "uuid";
-            public static final String TITLE = "uuid";
-            public static final String NOTE_BODY = "uuid";
-            public static final String DATE = "uuid";
-            public static final String DONE = "uuid";
+            public static final String TITLE = "title";
+            public static final String NOTE_BODY = "note_body";
+            public static final String DATE = "date";
+            public static final String DONE = "done";
         }
     }
 

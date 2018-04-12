@@ -1,12 +1,15 @@
 package com.classified.ogomb.notetracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -18,6 +21,7 @@ public class NoteFragment  extends Fragment {
     private EditText mNoteText;
     private EditText mNoteTitle;
     private CheckBox mDoneCheckBox;
+    private Button mReportButton;
     private static final String ARG_NOTE_ID = "note_id";
 
     public static NoteFragment newInstance(UUID noteId){
@@ -65,7 +69,7 @@ public class NoteFragment  extends Fragment {
         });
 
         mNoteText = view.findViewById(R.id.noteText);
-//        mNoteText.setText(mNote.getNote());
+        mNoteText.setText(mNote.getNote());
         mNoteText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -83,7 +87,7 @@ public class NoteFragment  extends Fragment {
             }
         });
         mDoneCheckBox = view.findViewById(R.id.note_done);
-//        mDoneCheckBox.setChecked(mNote.getDone());
+        mDoneCheckBox.setChecked(mNote.isDone());
         mDoneCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -91,7 +95,37 @@ public class NoteFragment  extends Fragment {
             }
         });
 
+        mReportButton = view.findViewById(R.id.send_report_button);
+        mReportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, getNoteReport());
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.note_report_subject));
+                intent = Intent.createChooser(intent, getString(R.string.send_report));
+                startActivity(intent);
+            }
+        });
+
+
         return view;
+    }
+
+    private String getNoteReport(){
+        String doneString = null;
+        if (mNote.isDone()){
+            doneString = getString(R.string.note_report_done);
+        }else {
+            doneString = getString(R.string.note_report_not_done);
+        }
+
+        String dateFormat = "EEE, MMM dd";
+        String dateString = DateFormat.format(dateFormat, mNote.getDate()).toString();
+
+        String report = getString(R.string.note_report, mNote.getTitle(), dateString, doneString);
+
+        return report;
     }
 
 }

@@ -2,7 +2,7 @@
     <string name="app_name">NoteTracker</string>
     <string name="Title">Title</string>
     <string name="note_title">Enter Note Title...</string>
-    <string name="Note">Note</string>
+    <string name="Details">Details</string>
     <string name="more_information">More Information</string>
     <string name="Add_note_hint">Enter your notes...</string>
     <string name="note_done">Done?</string>
@@ -11,5 +11,12 @@
     <string name="show_subtitle">Show subtitle</string>
     <string name="hide_subtitle">Hide subtitle</string>
     <string name="subtitle_format">%1$s notes</string>
+
+    <string name="send_note">Share Note Report</string>
+    <string name="note_report">%1$s! The note was made on %2$s. %3$s</string>
+    <string name="note_report_done">The note is accomplished</string>
+    <string name="note_report_not_done">The note is yet to be done</string>
+    <string name="note_report_subject">NoteTracker Report</string>
+    <string name="send_report">Share note via</string>
 
 </resources>

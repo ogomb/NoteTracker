@@ -136,7 +136,7 @@ public class NoteListFragment extends Fragment {
             mNote = note;
             mNoteTitleTextView.setText(mNote.getTitle());
             mDateTextView.setText(mNote.getDate().toString());
-            mDoneCheckBox.setChecked(mNote.getDone());
+            mDoneCheckBox.setChecked(mNote.isDone());
         }
 
         @Override
