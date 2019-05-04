@@ -1,0 +1,51 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Title"
+        style="?android:listSeparatorTextViewStyle"/>
+
+    <EditText
+        android:id="@+id/note_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/note_title"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Details"
+        style="?android:listSeparatorTextViewStyle"/>
+
+    <EditText
+        android:id="@+id/noteText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Add_note_hint"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/more_information"
+        style="?android:listSeparatorTextViewStyle"/>
+
+    <CheckBox
+        android:id="@+id/note_done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="160dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/note_done"/>
+
+    <Button
+        android:id="@+id/send_report_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_note"/>
+
+</LinearLayout>
